@@ -1,14 +1,17 @@
 class Button{
-    constructor( text){
-        this.text = text;
-        
-       
+    constructor( text, onClick ) {
+        this.text = text
+        this.onClick = onClick
     }
+    
     render(){
-        const Button = document.createElement('button');
-        Button.innerText = this.text;
-        Button.setAttribute('type','submit');
-        return Button;
+        const Button = document.createElement('button')
+        Button.classList.add('button')
+        Button.innerText = this.text
+        Button.setAttribute('type','submit')
+        Button.addEventListener('click',this.onClick)
+        
+        return Button
     }
-    addTask
+   
 }

@@ -3,17 +3,14 @@ class Input{
         this.text = text
         this.onChange = onChange
     }
-       
-    
-    
+        
     render(){
-        const input = document.createElement('input');
-        input.addEventListener(
-            'input',
-            (e) => this.onChange(e.target.value)
+        const Input = document.createElement('input')
+        Input.classList.add('input')
+        Input.addEventListener('input', (e) =>
+         this.onChange(e.target.value)
         )
-
-        return input;
+        return Input
     }
     
 }
