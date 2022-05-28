@@ -1,42 +1,54 @@
-class ToDo {
-  constructor(arr) {
-    this.arr = arr;
-    
-  }
-  
-  render(arr){
-     const text=document.querySelector('.text')
-        text.innerHTML=''
-        const ol=document.createElement('ol')
-   arr.forEach((element,index) => {     
-       const li = document.createElement('li');
-       const p = document.createElement('p');
-       p.classList.add('p')
-       p.innerText=element
-       p.addEventListener('click',()=>{
-           p.classList.toggle('through')
-         })
-         const button=new Button('Delete',this.onClick=()=>{
-                arr.splice(index,1)
-                this.render(arr)
-            })
-         li.append(p, button.render(li,this.onClick))
-         ol.appendChild(li)
-      text.appendChild(ol)
-  })
-}
+class MyTodo{
+constructor(arr){
+    this.arr=arr||[]
+    this.loadTasks()
 }
 
-newTodo = new ToDo(this.arr);
+loadTasks(){
+    const todosList=document.querySelector('.todos-list')
+    todosList.innerHTML=''
+    const ol=document.createElement('ol')
+    ol.classList.add('ol')
+this.arr.forEach((element,index) => {     
+   const li = document.createElement('li');
+   li.classList.add('li')
+   const p = document.createElement('p');
+   p.classList.add('p')
+   p.innerText=element
+   p.addEventListener('click',()=>{
+       p.classList.toggle('through')
+     })
+     const button=new Button('Delete',this.onClick=()=>{
+            this.arr.splice(index,1)
+            this.loadTasks()
+        })
+     li.append(p, button.render(li,this.onClick))
+     ol.appendChild(li)
+  todosList.appendChild(ol)
+})
+}
+
+addTasks(task){
+    if(task){       
+    this.arr=this.arr.concat(task)
+    this.loadTasks()
+    this.render()
+    }
+}
 
 
-let toDos = [];
-form = new Form("todo",onSubmit = (task) => {
-toDos=toDos.concat(task)
-document.querySelector('input').value=''
-newTodo.render(toDos)
-  }
-)
+render(){
+const container=document.querySelector('.todo-input')
+container.innerHTML=''
+const form = new Form("", (task) => {this.addTasks(task)})
+container.appendChild(form.render());
+this.loadTasks()
 
-document.querySelector(".todo").appendChild(form.render());
+}
+
+}
+
+
+
+
 

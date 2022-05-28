@@ -8,7 +8,7 @@ class Form   {
     const Form = document.createElement("form")
     Form.classList.add("form")
 
-    const input = new Input(this.value,(value) => this.value = value)
+    const input = new Input(this.value,(value) => this.value = value, "🖊️")
   
     const button = new Button("Add")
 
