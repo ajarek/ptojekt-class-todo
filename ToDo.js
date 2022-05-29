@@ -1,7 +1,17 @@
 class MyTodo{
 constructor(arr){
-    this.arr=arr||[]
+    this.arr=this.getTasks()||[]
     this.loadTasks()
+}
+
+setTasks(newTasks) {
+    this.tasks = newTasks
+    localStorage.setItem('task', JSON.stringify(this.arr))
+    this.render()
+}
+
+getTasks(){
+    return JSON.parse(localStorage.getItem('task'))
 }
 
 loadTasks(){
@@ -20,6 +30,7 @@ this.arr.forEach((element,index) => {
      })
      const button=new Button('Delete',this.onClick=()=>{
             this.arr.splice(index,1)
+            this.setTasks(this.arr)
             this.loadTasks()
         })
      li.append(p, button.render(li,this.onClick))
@@ -31,6 +42,7 @@ this.arr.forEach((element,index) => {
 addTasks(task){
     if(task){       
     this.arr=this.arr.concat(task)
+    this.setTasks(this.arr)
     this.loadTasks()
     this.render()
     }
