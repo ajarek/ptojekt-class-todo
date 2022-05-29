@@ -105,11 +105,10 @@ body{
     padding: 2rem;
   }
  .p{
-  font-size: 1.2rem;
   max-width:300px;
  }
  .li{
-  font-size: 1.2rem;
+  font-size: 1.3rem;
  }
  .through{ 
   
@@ -117,13 +116,13 @@ body{
 }
 .button{
   width:60px ;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
 }
  
 }
 @media screen and (max-width: 600px){
   .p{
-    font-size: 1rem;
+    font-size: 1.2rem;
     max-width:250px;
   }
 }
@@ -133,10 +132,9 @@ body{
   }
  .p{
   max-width:200px;
-  font-size: 1rem;
  }
  .li{
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-bottom: 2rem;
  }
  
